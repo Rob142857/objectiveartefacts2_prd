@@ -13,6 +13,7 @@
   text-align: left; /* Ensure text within the footer is left-aligned */
   font-size: 0.875rem;
   color: #333;
+  font-family: 'Roboto', ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji; /* Ensure a consistent font family */
 }
 
 .footer-container {
@@ -25,8 +26,9 @@
 }
 
 .footer-left p {
-  font-size: 1.9rem; /* Larger font size for "Crafted with care" */
+  font-size: 1.25rem; /* Larger font size for "Crafted with care" */
   color: black;
+  font-weight: bold; /* Make "Crafted with care" bold */
 }
 
 .footer-right {
@@ -48,6 +50,11 @@
 
 .footer a:hover {
   text-decoration: underline;
+}
+
+.footer-copyright {
+  font-size: 0.625rem !important; /* Smaller font size for copyright */
+  color: #888 !important; /* Less prominent color */
 }
 
 @media (max-width: 540px) {
