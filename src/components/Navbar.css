@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif; /* Ensure a consistent font family */
+  font-family: 'Roboto', ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji; /* Ensure a consistent font family */
 }
 
 #root {
