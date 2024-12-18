@@ -59,11 +59,13 @@ body {
 .navbar-title {
   color: black;
   font-size: 1.5rem;
+  font-weight: bold; /* Make the title bold */
 }
 
 .navbar-caption {
   color: gray;
   font-size: 0.875rem; /* Smaller font size for the caption */
+  font-weight: bold; /* Make the tagline bold */
 }
 
 .navbar-toggle {
