@@ -12,7 +12,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <a href="/" className="navbar-logo">
-          <img src="/logo.svg" alt="Logo" />
+          <img src="/logo.webp" alt="Logo" />
         </a>
         <span className="navbar-title">Site Title</span>
         <button className="navbar-toggle" onClick={toggleNav}>
@@ -25,7 +25,7 @@ function Navbar() {
           <a href="#contact">Contact</a>
         </div>
       </div>
-    </nav>
+    </nav>S
   );
 }
 
