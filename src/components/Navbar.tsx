@@ -11,10 +11,15 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <a href="/" className="navbar-logo">
-          <img src="/logo.webp" alt="Logo" />
-        </a>
-        <span className="navbar-title">Site Title</span>
+        <div className="navbar-logo">
+          <a href="/">
+            <img src="/logo.webp" alt="Logo" />
+          </a>
+          <div className="navbar-title-container">
+            <span className="navbar-title">Site Title</span>
+            <span className="navbar-caption">Your tagline goes here</span>
+          </div>
+        </div>
         <button className="navbar-toggle" onClick={toggleNav}>
           ☰
         </button>
