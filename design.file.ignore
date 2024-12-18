@@ -1,0 +1,219 @@
+Great! Let's update the reference file to use "library" instead of "permanent."
+
+### `design-reference.md`
+
+```markdown
+# App Structure and Design
+
+## Directory Structure
+
+```
+src/
+  markdown/
+    blog/
+      post1.md
+      post2.md
+    store/
+      category1/
+        product1.md
+        product2.md
+      category2/
+        product1.md
+        product2.md
+    library/
+      item1.md
+      item2.md
+  assets/
+    images/
+  components/
+    Navbar.tsx
+    Navbar.css
+    Footer.tsx
+    Footer.css
+    Blog/
+      BlogList.tsx
+      BlogPost.tsx
+      FeaturedPosts.tsx
+      Blog.css
+    Store/
+      StoreList.tsx
+      ProductDetail.tsx
+      Store.css
+    Library/
+      LibraryList.tsx
+      LibraryDetail.tsx
+      Library.css
+  pages/
+    Home.tsx
+    Blog.tsx
+    Store.tsx
+    Library.tsx
+  utils/
+    markdownParser.ts
+  App.tsx
+  App.css
+  index.css
+  main.tsx
+```
+
+## Components
+
+1. **Navbar**: A navigation bar that persists at the top of the page.
+2. **Footer**: A footer that persists at the bottom of the page.
+3. **BlogList**: A component to list all blog posts.
+4. **BlogPost**: A component to display a single blog post.
+5. **FeaturedPosts**: A component to display pinned featured posts.
+6. **StoreList**: A component to list all store categories and products.
+7. **ProductDetail**: A component to display details of a single product.
+8. **LibraryList**: A component to list all library content.
+9. **LibraryDetail**: A component to display details of a single library content item.
+10. **Home**: The home page of the app that includes the `BlogList` and `FeaturedPosts` components.
+11. **Blog**: The blog page that includes the `BlogList` component.
+12. **Store**: The store page that includes the `StoreList` component.
+13. **Library**: The library content page that includes the `LibraryList` component.
+14. **MarkdownParser**: A utility to parse markdown files.
+
+## Example Component Structure
+
+### Home.tsx
+```tsx
+import BlogList from '../components/Blog/BlogList';
+import FeaturedPosts from '../components/Blog/FeaturedPosts';
+import './Home.css';
+
+function Home() {
+  return (
+    <div className="home">
+      <FeaturedPosts />
+      <BlogList />
+    </div>
+  );
+}
+
+export default Home;
+```
+
+### BlogList.tsx
+```tsx
+import { useState, useEffect } from 'react';
+import { parseMarkdown } from '../../utils/markdownParser';
+import './Blog.css';
+
+function BlogList() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    // Fetch and parse markdown files
+    fetch('/path/to/markdown/files')
+      .then(response => response.json())
+      .then(data => {
+        const parsedPosts = data.map(post => parseMarkdown(post));
+        setPosts(parsedPosts);
+      });
+  }, []);
+
+  return (
+    <div className="blog-list">
+      {posts.map(post => (
+        <div key={post.id} className="blog-post">
+          <h2>{post.title}</h2>
+          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default BlogList;
+```
+
+### FeaturedPosts.tsx
+```tsx
+import { useState, useEffect } from 'react';
+import { parseMarkdown } from '../../utils/markdownParser';
+import './Blog.css';
+
+function FeaturedPosts() {
+  const [featuredPosts, setFeaturedPosts] = useState([]);
+
+  useEffect(() => {
+    // Fetch and parse markdown files for featured posts
+    fetch('/path/to/featured/markdown/files')
+      .then(response => response.json())
+      .then(data => {
+        const parsedPosts = data.map(post => parseMarkdown(post));
+        setFeaturedPosts(parsedPosts);
+      });
+  }, []);
+
+  return (
+    <div className="featured-posts">
+      {featuredPosts.map(post => (
+        <div key={post.id} className="featured-post">
+          <h2>{post.title}</h2>
+          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default FeaturedPosts;
+```
+
+### markdownParser.ts
+```ts
+import { marked } from 'marked';
+
+export function parseMarkdown(markdown: string) {
+  return marked(markdown);
+}
+```
+
+## Routing
+
+Use `react-router-dom` to handle navigation between different pages. Install it using:
+
+```sh
+npm install react-router-dom
+```
+
+Update 
+
+main.tsx
+
+ to include routing:
+
+```tsx
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './index.css';
+import App from './App';
+import Home from './pages/Home';
+import Blog from './pages/Blog';
+import Store from './pages/Store';
+import Library from './pages/Library';
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <Router>
+      <App />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/store" element={<Store />} />
+        <Route path="/library" element={<Library />} />
+      </Routes>
+    </Router>
+  </StrictMode>,
+);
+```
+
+This structure should provide a solid foundation for your app, allowing you to easily expand and maintain it as you add more features.
+```
+
+You can save this content to a file named `design-reference.md` for future reference.
+You can save this content to a file named `design-reference.md` for future reference.
+
+Similar code found with 1 license type

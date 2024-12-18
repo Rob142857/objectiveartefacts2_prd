@@ -4,6 +4,13 @@
     padding: 0;
     box-sizing: border-box;
   }
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin-top: 4rem; /* Add margin to account for the navbar height */
+  }
   
   .navbar {
     position: fixed;
