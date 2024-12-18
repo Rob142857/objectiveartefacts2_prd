@@ -16,8 +16,8 @@ function Navbar() {
             <img src="/logo.webp" alt="Logo" />
           </a>
           <div className="navbar-title-container">
-            <span className="navbar-title">Site Title</span>
-            <span className="navbar-caption">Your tagline goes here</span>
+            <span className="navbar-title">Objective Artefacts</span>
+            <span className="navbar-caption">A place for sharing insights.</span>
           </div>
         </div>
         <button className="navbar-toggle" onClick={toggleNav}>
@@ -26,8 +26,8 @@ function Navbar() {
         <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
           <a href="#home">Home</a>
           <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#contact">Contact</a>
+          <a href="#services">Library</a>
+          <a href="#contact">Store</a>
         </div>
       </div>
     </nav>

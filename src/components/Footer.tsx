@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-        <p>© 2023 Your Company. All rights reserved.</p>
+        <p>© 2024 Objective Artefacts. All rights reserved.</p>
       </div>
     </footer>
   );
