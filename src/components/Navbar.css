@@ -1,13 +1,22 @@
-.navbar {
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .navbar {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    background-color: #333;
+    background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 1rem;
     z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .navbar-container {
@@ -15,10 +24,17 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
   .navbar-logo img {
-    height: 40px;
+    height: 50px;
+  }
+  
+  .navbar-title {
+    color: black;
+    font-size: 1.5rem;
   }
   
   .navbar-toggle {
@@ -26,21 +42,23 @@
     font-size: 1.5rem;
     background: none;
     border: none;
-    color: white;
+    color: black;
     cursor: pointer;
   }
   
   .navbar-links {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
   }
   
   .navbar-links a {
-    color: white;
+    color: black;
     text-decoration: none;
   }
   
-  @media (max-width: 768px) {
+  /* Collapse navbar at 1260px */
+  @media (max-width: 1260px) {
     .navbar-toggle {
       display: block;
     }
@@ -49,7 +67,7 @@
       display: none;
       flex-direction: column;
       width: 100%;
-      background-color: #333;
+      background-color: white;
       position: absolute;
       top: 100%;
       left: 0;
@@ -62,5 +80,12 @@
     .navbar-links a {
       padding: 1rem;
       text-align: center;
+    }
+  }
+  
+  /* Hide site title at 540px */
+  @media (max-width: 540px) {
+    .navbar-title {
+      display: none;
     }
   }
