@@ -14,6 +14,7 @@ function Navbar() {
         <a href="/" className="navbar-logo">
           <img src="/logo.svg" alt="Logo" />
         </a>
+        <span className="navbar-title">Site Title</span>
         <button className="navbar-toggle" onClick={toggleNav}>
           ☰
         </button>
