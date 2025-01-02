@@ -1,5 +1,6 @@
 // filepath: /src/pages/Store.tsx
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { fetchProducts } from '../services/d365Service';
 
 interface Product {
@@ -21,8 +22,13 @@ const Store: React.FC = () => {
         setConnectionInfo('Connected to D365 successfully.');
       } catch (error) {
         console.error('Error connecting to D365:', error);
-        const err = error as any;
-        setConnectionInfo(`Failed to connect to D365: ${err.response ? err.response.data : err.message}`);
+        if (axios.isAxiosError(error)) {
+          setConnectionInfo(`Failed to connect to D365: ${error.response ? error.response.data : error.message}`);
+        } else if (error instanceof Error) {
+          setConnectionInfo(`Failed to connect to D365: ${error.message}`);
+        } else {
+          setConnectionInfo('Failed to connect to D365: Unknown error');
+        }
       }
     };
     getProducts();
