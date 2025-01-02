@@ -22,12 +22,8 @@ const Store: React.FC = () => {
         setConnectionInfo('Connected to D365 successfully.');
       } catch (error: any) {
         console.error('Error connecting to D365:', error);
-        if ((error as any).response) {
-          if ((error as any).response) {
-            setConnectionInfo(`Failed to connect to D365: ${JSON.stringify((error as any).response.data)}`);
-          } else if (error instanceof Error) {
-            setConnectionInfo(`Failed to connect to D365: ${error.message}`);
-          }
+        if (error.response) {
+          setConnectionInfo(`Failed to connect to D365: ${JSON.stringify(error.response.data)}`);
         } else if (error.request) {
           setConnectionInfo('Failed to connect to D365: No response received from server.');
         } else {
