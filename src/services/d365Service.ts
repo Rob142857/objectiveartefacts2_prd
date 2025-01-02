@@ -2,6 +2,7 @@
 import axios from 'axios';
 
 const functionUrl = process.env.REACT_APP_FUNCTION_URL;
+console.log('Function URL:', functionUrl); // Log the function URL
 
 export const fetchProducts = async () => {
   try {
