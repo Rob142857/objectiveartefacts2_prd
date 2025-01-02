@@ -6,7 +6,9 @@ const Login: React.FC = () => {
   const { instance } = useMsal();
 
   const handleLogin = () => {
-    instance.loginPopup().catch(e => {
+    instance.loginPopup({
+      scopes: ['https://api.businesscentral.dynamics.com/.default'],
+    }).catch(e => {
       console.error(e);
     });
   };
