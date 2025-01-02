@@ -17,17 +17,21 @@ const Store: React.FC = () => {
     const getProducts = async () => {
       try {
         const data = await fetchProducts();
+        console.log('Setting products:', data); // Log the data being set
         setProducts(data);
         setConnectionInfo('Connected to D365 successfully.');
-      } catch (error) {
+      } catch (error: any) {
         console.error('Error connecting to D365:', error);
-        const err = error as any;
-        if (err.response) {
-          setConnectionInfo(`Failed to connect to D365: ${JSON.stringify(err.response.data)}`);
-        } else if (err.request) {
+        if ((error as any).response) {
+          if ((error as any).response) {
+            setConnectionInfo(`Failed to connect to D365: ${JSON.stringify((error as any).response.data)}`);
+          } else if (error instanceof Error) {
+            setConnectionInfo(`Failed to connect to D365: ${error.message}`);
+          }
+        } else if (error.request) {
           setConnectionInfo('Failed to connect to D365: No response received from server.');
         } else {
-          setConnectionInfo(`Failed to connect to D365: ${err.message}`);
+          setConnectionInfo(`Failed to connect to D365: ${error.message}`);
         }
       }
     };
