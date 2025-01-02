@@ -1,4 +1,4 @@
-// filepath: /src/pages/Store.tsx secret thingymigig ece5a3f0-e645-44a1-875e-3ad32fa6742c
+// filepath: /src/pages/Store.tsx
 import React, { useEffect, useState } from 'react';
 import { fetchProducts } from '../services/d365Service';
 
@@ -21,7 +21,7 @@ const Store: React.FC = () => {
         setConnectionInfo('Connected to D365 successfully.');
       } catch (error) {
         console.error('Error connecting to D365:', error);
-        setConnectionInfo('Failed to connect to D365.');
+        setConnectionInfo(`Failed to connect to D365: ${error.response ? error.response.data : error.message}`);
       }
     };
     getProducts();
