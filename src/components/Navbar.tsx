@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
@@ -12,9 +13,9 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo">
-          <a href="/">
+          <Link to="/">
             <img src="/logo.webp" alt="Logo" />
-          </a>
+          </Link>
           <div className="navbar-title-container">
             <span className="navbar-title">Objective Artefacts</span>
             <span className="navbar-caption">A place for sharing insights.</span>
@@ -24,10 +25,10 @@ function Navbar() {
           ☰
         </button>
         <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#services">Library</a>
-          <a href="#contact">Store</a>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/library">Library</Link>
+          <Link to="/store">Store</Link>
         </div>
       </div>
     </nav>
