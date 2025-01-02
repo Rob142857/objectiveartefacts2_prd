@@ -11,11 +11,18 @@ interface Product {
 
 const Store: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [connectionInfo, setConnectionInfo] = useState<string>('');
 
   useEffect(() => {
     const getProducts = async () => {
-      const data = await fetchProducts();
-      setProducts(data);
+      try {
+        const data = await fetchProducts();
+        setProducts(data);
+        setConnectionInfo('Connected to D365 successfully.');
+      } catch (error) {
+        console.error('Error connecting to D365:', error);
+        setConnectionInfo('Failed to connect to D365.');
+      }
     };
     getProducts();
   }, []);
@@ -23,6 +30,7 @@ const Store: React.FC = () => {
   return (
     <div>
       <h1>Store</h1>
+      <h2>{connectionInfo}</h2>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
         {products.map((product) => (
           <div key={product.id} style={{ border: '1px solid #ccc', padding: '10px', width: '200px' }}>
