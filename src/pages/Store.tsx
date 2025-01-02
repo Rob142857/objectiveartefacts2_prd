@@ -2,8 +2,15 @@
 import React, { useEffect, useState } from 'react';
 import { fetchProducts } from '../services/d365Service';
 
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+}
+
 const Store: React.FC = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const getProducts = async () => {
