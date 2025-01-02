@@ -1,4 +1,4 @@
-// filepath: /src/pages/Store.tsx
+// filepath: /src/pages/Store.tsx secret thingymigig ece5a3f0-e645-44a1-875e-3ad32fa6742c
 import React, { useEffect, useState } from 'react';
 import { fetchProducts } from '../services/d365Service';
 
